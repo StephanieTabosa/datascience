@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Autor: Stèphanie Rêgo Barreto Tabosa - Machine Learning - Classificação: Comprar Carro ou Moto?</title>
+<!-- Referência ao Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+<!-- Definição de estilo para fonte -->
+<style>
+        .lb-sm{
+            font-size: 15px;
+            font-family: 'Ubuntu', sans-serif;
+            color: white;
+            font-weight: normal;
+        }
+        .container{
+          margin-top: 20px;
+        }
+        .painel-color{
+          background-color: #4db6ac;
+        }
+        .color-panel{
+          color: black;
+        }
+        .btn-color{
+          background-color: #00695c;
+        }
+        .result-color{
+          color: #053645;
+
+        }
+        .imagem{
+          background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url(carro-moto.jpg);
+      width: 200px;
+      height: 200px;
+      margin-bottom: -70px;
+        }
+        .title{
+          font-size: 35px;
+          font-family: 'Ubuntu', sans-serif;
+          color: #053645;
+
+        }
+
+</style>
+</head>
+<body>
+   <!-- div container -->
+   <div class="container">
+       <!-- Criação de uma div painel -->
+       <div class="panel panel-info painel-color">
+           <!-- Título da div painel -->
+           <div class="panel-heading color-panel ">
+            <div class= "color-panel">
+              <div class=" imagem"></div>
+              <b class="title">Comprar Carro ou Moto? Descubra!</b></div></div>
+           <!-- Corpo da div painel -->
+           <div class="panel-body">
+               <div id="form-container">
+                   <!-- Definição -->
+                   <form action="/form/" method="post">
+                       <div class="form-group input-group-sm">
+                           <!-- Intenção. Este campo não afetará a tarefa de classificação -->
+                           <label class="lb-sm">Qual a sua intenção inicial?</label>
+                           <input name="intencao" type="text" class="form-control" placeholder="Carro ou Moto?" required />
+                       </div>
+                       <div class="form-group input-group-sm">
+
+                           <!-- Campo para valor -->
+                           <label class="lb-sm">Quanto você tem de dinheiro para a aquisição?</label>
+                                <input name="valor" class="form-control" placeholder="Digite apenas números. Ex: 20000"/>
+                       </div>
+
+                       <div class="form-group input-group-sm">
+                            <!-- Campo para consumo por litro -->
+                           <label class="lb-sm">Informe quanto gostaria que fosse o consumo por litro (Km/l)</label>
+                                <input name="consumo_por_litro" class="form-control" placeholder="Digite apenas números. Ex: 14"/>
+                       </div>
+
+                       <div class="form-group input-group-sm">
+                            <!-- Campo para tempo transito -->
+                           <label class="lb-sm">Quanto tempo você gasta para chegar no trabalho/faculdade?</label>
+                                <input name="tempo_transito" class="form-control" placeholder="Digite o valor em minutos"/>
+                       </div>
+                       <div class="form-group input-group-sm">
+
+                           <!-- Campo para segurança -->
+                           <label class="lb-sm">Você considera o fator SEGURANÇA importante?</label>
+                           <select name="seguranca" class="form-control">
+                               <option value="0">--Selecione--</option>
+                               <option value="1">Sim</option>
+                               <option value="0">Não</option>
+                           </select>
+                         </div>  <!--form-group input-group-sm-->
+
+                        <div class="form-group input-group-sm">
+                           <!-- Campo para viagem em familia -->
+                           <label class="lb-sm">Você considera viagem em família importante?</label>
+                           <select name="viagem_familia" class="form-control">
+                               <option value="0">--Selecione--</option>
+                               <option value="1">Sim</option>
+                               <option value="0">Não</option>
+                           </select>
+                          </div>  <!--form-group input-group-sm-->
+
+                          <div class="form-group input-group-sm">
+                           <!-- Campo para temp/clima -->
+                           <label class="lb-sm">Quanto ao clima/temperatura: quanto isto impacta na sua decisão?</label>
+                           <select name="impacto_clima" class="form-control">
+                               <option value="0">--Selecione--</option>
+                               <option value="0">Indiferente</option>
+                               <option value="1">Não impacta a minha decisão</option>
+                               <option value="2">Impacta a minha decisão</option>
+                           </select>
+                           </div>  <!--form-group input-group-sm-->
+
+                       </div>
+
+                       <hr />
+
+                       <div class="form-group input-group-sm">
+                           <button type="submit" class="btn btn-md btn-primary pull-right btn-color">Classificar</button>
+                       </div>
+
+                       <!-- Apresentação dos Resultados -->
+                       <div class="form-group result-color">
+                           <label>Resultado!</label>
+                       </div>
+
+                       <!-- Apresentação do celular -->
+                       <div class="form-group">
+                           <span class="result-color"><strong>Você gostaria de um(a): </strong> {{intencao}}</span>
+                       </div>
+
+                       <!-- Apresentação da classificação do celular -->
+                       <div class="form-group">
+                           <span class="result-color"><strong>O algoritmo classificou que você deveria comprar um(a): </strong> {{classificacao}}</span>
+
+                       <!-- Apresentação do valor da probabilidade-->
+                       <div class="form-group">
+                           <span class="result-color"><strong>Probabilidade:</strong> {{probabilidade}}</span>
+
+                       </div>
+                    </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </body>
+</html>
